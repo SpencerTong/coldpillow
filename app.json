@@ -9,7 +9,11 @@
     "userInterfaceStyle": "automatic",
     "ios": {
       "icon": "./assets/expo.icon",
-      "bundleIdentifier": "app.coldpillow"
+      "bundleIdentifier": "app.coldpillow",
+      "infoPlist": {
+        "NSSpeechRecognitionUsageDescription": "ColdPillow turns your recordings into text on your phone so it can reflect back on your night.",
+        "NSMicrophoneUsageDescription": "ColdPillow uses the microphone to record your nightly pillow talk. Recordings stay on your phone until they are transcribed."
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -18,7 +22,13 @@
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"
+      ]
     },
     "web": {
       "output": "static",
@@ -53,6 +63,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "56c654fb-20da-4ddf-b05d-8b7090559663"
+      }
+    },
+    "owner": "spencertong"
   }
 }
