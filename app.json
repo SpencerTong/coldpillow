@@ -8,7 +8,8 @@
     "scheme": "coldpillow",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon"
+      "icon": "./assets/expo.icon",
+      "bundleIdentifier": "app.coldpillow"
     },
     "android": {
       "adaptiveIcon": {
@@ -32,7 +33,22 @@
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 76
         }
-      ]
+      ],
+      "expo-sqlite",
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "ColdPillow uses the microphone to record your nightly pillow talk. Recordings stay on your phone until they are transcribed."
+        }
+      ],
+      [
+        "expo-speech-recognition",
+        {
+          "microphonePermission": "ColdPillow uses the microphone to record your nightly pillow talk. Recordings stay on your phone until they are transcribed.",
+          "speechRecognitionPermission": "ColdPillow turns your recordings into text on your phone so it can reflect back on your night."
+        }
+      ],
+      "expo-asset"
     ],
     "experiments": {
       "typedRoutes": true,

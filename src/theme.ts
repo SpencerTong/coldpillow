@@ -41,6 +41,16 @@ export const morning: Palette = {
   graceDot: '#C9B6A4',
 };
 
+// Talking screen: darker than Ember so the screen stays dim at any time of day.
+export const dim = {
+  background: '#0F0C0A',
+  text: '#D9CDBE',       // body text
+  textBright: '#E4D7C6', // timer
+  textMuted: '#968878',  // status lines
+  quote: '#B3A594',      // the italic prompt line
+  accent: '#E8A45C',     // waveform, stop button
+};
+
 // Morning palette from 5:00 to 16:59, night palette otherwise.
 // Kept as one function so the rule is easy to change later (or to follow the user's reminder time).
 export function paletteFor(date: Date = new Date()): Palette {
@@ -63,11 +73,13 @@ export const type = {
   label: { fontFamily: fonts.sansBold, fontSize: 13, lineHeight: 18 },
   caption: { fontFamily: fonts.sans, fontSize: 13, lineHeight: 18 },
   tab: { fontFamily: fonts.sans, fontSize: 12, lineHeight: 16 },
+  timer: { fontFamily: fonts.serif, fontSize: 64, lineHeight: 72 },
+  status: { fontFamily: fonts.sans, fontSize: 14, lineHeight: 20 },
 };
 
 export const space = { xs: 4, sm: 8, md: 12, lg: 16, xl: 24, xxl: 32 };
 
-export const radius = { card: 20, pill: 999, button: 27 };
+export const radius = { card: 20, pill: 999, button: 27, stopSquare: 6 };
 
 export const size = {
   touchTarget: 44,     // minimum tap area
@@ -75,4 +87,9 @@ export const size = {
   stopButton: 88,      // Recording screen
   primaryButton: 54,   // full-width buttons
   streakDot: 28,
+  stopSquare: 28,      // square inside the stop button
+  waveform: 80,        // waveform area height
+  waveBar: 5,          // waveform bar width
+  stopBorder: 2,       // stop button ring
+  promptWidth: 300,    // max width of the italic prompt line
 };
