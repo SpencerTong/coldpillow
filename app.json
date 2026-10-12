@@ -12,7 +12,8 @@
       "bundleIdentifier": "app.coldpillow",
       "infoPlist": {
         "NSSpeechRecognitionUsageDescription": "ColdPillow turns your recordings into text on your phone so it can reflect back on your night.",
-        "NSMicrophoneUsageDescription": "ColdPillow uses the microphone to record your nightly pillow talk. Recordings stay on your phone until they are transcribed."
+        "NSMicrophoneUsageDescription": "ColdPillow uses the microphone to record your nightly pillow talk. Recordings stay on your phone until they are transcribed.",
+        "ITSAppUsesNonExemptEncryption": false
       }
     },
     "android": {
