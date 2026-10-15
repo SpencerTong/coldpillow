@@ -9,10 +9,10 @@ export type Palette = {
   nav: string;          // tab bar background
   text: string;         // primary text
   textMuted: string;    // secondary text, captions
-  accent: string;       // buttons, active tab, streak dots, section labels
+  accent: string;       // buttons, active tab, filled week dots, section labels
   onAccent: string;     // text/icons placed on the accent color
   accentSoft: string;   // second accent for small touches (e.g. a highlighted dot)
-  graceDot: string;     // dashed outline for grace nights in the streak
+  dotEmpty: string;     // outline for week dots with no night
 };
 
 export const night: Palette = {
@@ -25,7 +25,7 @@ export const night: Palette = {
   accent: '#E8A45C',
   onAccent: '#1F1408',
   accentSoft: '#C98B7A',
-  graceDot: '#7A6A5C',
+  dotEmpty: '#7A6A5C',
 };
 
 export const morning: Palette = {
@@ -38,7 +38,7 @@ export const morning: Palette = {
   accent: '#A44E24',      // passes 4.5:1 contrast for white text and on cream
   onAccent: '#FFFFFF',
   accentSoft: '#F2B48C',  // decorative only (sunrise mark), never for text
-  graceDot: '#C9B6A4',
+  dotEmpty: '#C9B6A4',
 };
 
 // Talking screen: darker than Ember so the screen stays dim at any time of day.
@@ -86,7 +86,8 @@ export const size = {
   recordButton: 132,   // Tonight screen
   stopButton: 88,      // Recording screen
   primaryButton: 54,   // full-width buttons
-  streakDot: 28,
+  weekDot: 12,         // nights-this-week dots
+  dotBorder: 1.5,      // outline on empty week dots
   stopSquare: 28,      // square inside the stop button
   waveform: 80,        // waveform area height
   waveBar: 5,          // waveform bar width

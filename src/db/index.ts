@@ -1,7 +1,9 @@
 import { randomUUID } from 'expo-crypto';
 import type { SQLiteDatabase } from 'expo-sqlite';
 
-import type { InputType, Night, Read, Settings } from './schema';
+import { toDateString } from '@/format';
+
+import type { InputType, Night, Read, ReadStatus, Settings } from './schema';
 
 export { migrate } from './migrations';
 export * from './schema';
@@ -15,9 +17,7 @@ const NIGHT_DAY_START_HOUR = 5;
 export function nightDateFor(moment: Date = new Date()): string {
   const d = new Date(moment);
   if (d.getHours() < NIGHT_DAY_START_HOUR) d.setDate(d.getDate() - 1);
-  const mm = String(d.getMonth() + 1).padStart(2, '0');
-  const dd = String(d.getDate()).padStart(2, '0');
-  return `${d.getFullYear()}-${mm}-${dd}`;
+  return toDateString(d);
 }
 
 // --- nights ---
@@ -73,6 +73,22 @@ export function getNight(db: SQLiteDatabase, id: string): Promise<Night | null> 
 export function listNights(db: SQLiteDatabase): Promise<Night[]> {
   return db.getAllAsync<Night>(
     'SELECT * FROM nights WHERE deletedAt IS NULL ORDER BY date DESC, createdAt DESC',
+  );
+}
+
+// One row per Journal card: the night plus the parts of its read the list shows.
+export type JournalEntry = Night & {
+  readStatus: ReadStatus | null;
+  summary: string | null;
+};
+
+// Newest first, soft-deleted nights excluded.
+export function listJournal(db: SQLiteDatabase): Promise<JournalEntry[]> {
+  return db.getAllAsync<JournalEntry>(
+    `SELECT nights.*, reads.status AS readStatus, reads.summary AS summary
+     FROM nights LEFT JOIN reads ON reads.nightId = nights.id
+     WHERE nights.deletedAt IS NULL
+     ORDER BY nights.date DESC, nights.createdAt DESC`,
   );
 }
 

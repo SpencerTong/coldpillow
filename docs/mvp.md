@@ -10,7 +10,7 @@ In Phase 1:
 |---|---|
 | Bedtime reminder | Local notification at a chosen time; opens to Tonight. One reminder, no second nag. |
 | Talk or type | Up to 5 minutes. Typing for nights you can't talk out loud. |
-| Transcription | On-device or cloud, decided by the step 4 spike. |
+| Transcription | On-device (Apple speech recognizer via expo-speech-recognition, on-device only), chosen in the step 4 spike on 2026-10-12. Cloud speech-to-text via a Cloud Function stays the fallback if quality slips. |
 | Tonight's read | Reflection, cards chosen by the kind of night, calm line, Goodnight. |
 | Crisis screen | Shown instead of the read when the crisis flag or keyword check fires. |
 | Last night card | Tonight tab during the day: the reflection plus the lead card. Read-only. |

@@ -24,6 +24,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { discardRecording, keepRecording } from '@/audio';
 import { insertNight } from '@/db';
+import { formatDuration } from '@/format';
 import { dim, radius, size, space, type } from '@/theme';
 
 const MAX_SECONDS = 5 * 60;
@@ -32,11 +33,6 @@ const POLL_MS = 100;
 const BAR_COUNT = 13;
 const BAR_MAX = 0.8; // tallest bar as a share of the waveform height
 const PROMPT = "Your day, what's on your mind, what's next. No need to make sense.";
-
-function formatTime(totalSeconds: number): string {
-  const s = Math.floor(totalSeconds);
-  return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
-}
 
 // dBFS (about -60 quiet to 0 loud) to 0..1.
 function levelFromMetering(db: number | undefined): number {
@@ -163,7 +159,7 @@ function VoiceFlow() {
   return (
     <>
       <Text style={[type.status, styles.muted]}>Listening · the screen stays dim</Text>
-      <Text style={[type.timer, styles.timer]}>{formatTime(state.durationMillis / 1000)}</Text>
+      <Text style={[type.timer, styles.timer]}>{formatDuration(state.durationMillis / 1000)}</Text>
 
       <View style={styles.waveform} accessibilityElementsHidden importantForAccessibility="no">
         {levels.map((level, i) => (

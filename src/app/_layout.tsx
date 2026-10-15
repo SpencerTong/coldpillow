@@ -60,6 +60,7 @@ export default function RootLayout() {
           <Stack.Screen name="read" />
           <Stack.Screen name="crisis" />
           <Stack.Screen name="onboarding" />
+          <Stack.Screen name="night/[id]" />
         </Stack>
       </ThemeProvider>
     </SQLiteProvider>
